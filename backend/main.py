@@ -85,8 +85,6 @@ def userPlaylistSetRoute():
     if playlistSet["error"]["message"] == "The access token expired":
       return playlistSet
   else:
-    print('yo')
-    # separatePlaylistSet(playlistSet)
     return jsonify(playlistSet)
 
 # separates single playlist from the set
@@ -97,8 +95,6 @@ def userPlaylistSetRoute():
 def separatePlaylistSet(playlistSet):
   for playlist in playlistSet:
     savePlaylist(playlist)
-    # playlistId = listHandler.spotifyObjects.playlist.returnId(playlist)
-    # tracks = fetchPlaylistTracks(playlistId)
 
 
 # @celery.task()
@@ -114,7 +110,6 @@ def savePlaylist(playlist):
       "id": playlistId, 
       "name": name,
       "images": images,
-      # "owner": userId, # could commented out? maybe
       "total": total    
       }
     )
@@ -186,22 +181,6 @@ def saveTracks(tracks):
 
 def saveTrackToDb(track):
   save.trackSaver(track)
-  # findAudioFeature(track)
-  # separateArtistFromTrack(track)
-
-# def findAudioFeature(track):
-#   trackId = listHandler.spotifyObjects.track.returnId(track)
-#   print('eti tälle audiofeature', trackId)
-#   token = Spotify.index.getToken()
-#   audioFeatures = Spotify.track.fetchAudioFeature(trackId, token)
-#   save.audioFeaturesSaver(audioFeatures)
-
-# def separateArtistFromTrack(track):
-#   artists = listHandler.spotifyObjects.track.returnArtists(track)
-#   for artist in artists:
-#     artistId = listHandler.spotifyObjects.artist.returnId(artist)
-#     findArtist(artistId)
-#   print('artists, ', artists)
 
 def findArtist(artistId):
   token = Spotify.index.getToken()
@@ -223,12 +202,6 @@ def findLyricsPage(trackTitle, artistName):
       "geniusUrl": remote_song_info["result"]["url"]
     }
   return geniusSet
-    # yhdistä tietokantaan geniuksen data ja spotifyn data.
-    # ja näin sitten hae se tieto fronendsit
-
-# here save it for db
-
-
 
 # search Track with key word
 # returns list of tracks
@@ -264,26 +237,6 @@ def getAudioFeatures(trackId):
     audioFeatures = Spotify.track.fetchAudioFeature(trackId, token)
     save.audioFeaturesSaver(audioFeatures)
     return audioFeatures
-  # # get audiofeatures from db
-  # or fetch them from spotify api
-  # 20.4.2020
-  # print('getting it')
-# # 29.2.2020
-# @app.route('/list-user-playlist-set', methods=["POST"])
-# def listUserPlaylistSet():
-#   requestParams = request.get_json()
-#   userId = requestParams["id"]
-#   token = requestParams["token"]
-#   playlistList = handlePlaylistFetch(userId, token)
-#   return jsonify(playlistList)
-
-
-# logout
-# # 9.2.2020
-# @app.route('/logout')
-# def logout():
-#   url = "http://localhost:3000/"
-#   return redirect(url)
 
 # to Create New Paylist
 # token : access_token for spotify API
@@ -335,7 +288,7 @@ def fetchLyrics(trackId):
     return lyrics
   else: 
     return "no track"
-  # lyrics = lyricsByTrackId(trackId)
+  
 def lyricsFromDB(trackId):
   lyrics = find.lyricsFinder(trackId)
   return lyrics
@@ -396,7 +349,6 @@ def loadRequest():
   for item in prettyTrackList:
     track = find.trackFinder(item["trackId"])
     returnThisList.append(track)    
-  # return list of tracks :)
   return jsonify(returnThisList)
 
 
@@ -409,8 +361,6 @@ def routeArtistDetails():
   return jsonify(artist)
 
 ## fetching artist
-# first from db
-# if not then fetch from spotify
 def checkForArtist(artistId):
   artist = find.artistFinder(artistId)
   if artist:
@@ -442,57 +392,6 @@ def handleApproment(trackId, playlistId, action, token):
     return "rejected"
 
 def saveTrackToPlaylist(playlistId, uri, token, trackId):
-  # save.linkPlaylistTrack(playlistId, trackId)
-  # update request status by savits status to in-active
   response = Spotify.playlist.addTrack(playlistId, uri, token) # def addTrack(playlistId, token, track, 
   return response
-
-# # handling route request for adding tracks to playlist
-# @app.route('/api/db/request/track/', methods=['POST'])
-# def approveTracks():
-#   requestParams = request.get_json()
-#   track = requestParams["track"]
-#   token = requestParams["token"]
-#   playlistId = requestParams["playlistId"]
-#   action = requestParams["action"]
-#   trackId = listHandler.track.returnId(track)
-#   # update request status by savits status to in-active
-#   save.requestSaver(trackId, playlistId, 'in-active')
-#   if action:
-#     trackCollection = find.trackFinder(trackId)
-#     response = handleApproveTracks(trackCollection["uri"], playlistId, token)
-#     return jsonify(response)
-#   else:
-#     return jsonify({"rejected": True})
-
-# # handling adding tracks to playlist
-# def handleApproveTracks(uri, playlistId, token):
-#   response = Spotify.playlist.addTrack(playlistId, uri, token) # def addTrack(playlistId, token, track, 
-#   return response
-
- 
-
-# handling route request for adding tracks to playlist
-# @app.route('/load-lyrics', methods=['POST'])
-# def loadLyrics():
-#   requestParams = request.get_json()
-#   track = requestParams["id"]
-#   lyric = find.lyricFinder(track)
-#   return jsonify({"response": lyric})
-
-# # handling route request for adding tracks to playlist
-# @app.route('/load-artist', methods=['POST'])
-# def loadArtist():
-#   requestParams = request.get_json()
-#   artist = requestParams["id"]
-#   info = find.artistFinder(artist)
-#   return jsonify({"response": info})
-
-# @app.route('/load-audioFeatures', methods=['POST'])
-# def loadAudioFeatures():
-#   requestParams = request.get_json()
-#   track = requestParams["id"]
-#   audioFeatures = find.audioFeaturesFinder(track)
-#   return jsonify({"response": audioFeatures})
-
 

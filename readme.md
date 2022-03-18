@@ -4,13 +4,22 @@
 
 
 <ol>
-<li>clone repository ```git clone https://github.com/salmiakkiman/playlist-creator-full-stack```</li>
+<li>clone repository `git clone https://github.com/salmiakkiman/playlist-creator-full-stack`
+</li>
 
-<li>run the project ```sudo docker-compose up -d```
-More about Docker:
-https://docs.docker.com/compose/install/</li>
+<li>run the project `sudo docker-compose up -d`
+</li>
 </ol>
 
+## Basic functionality
+
+<ol>
+    <li>Login with Spotify account</li>
+    <li>Create public Spotify playlists</li>
+    <li>Share playlist's url to others</li>
+    <li>Search songs for requests</li>
+    <li>Request songs for playlist</li>
+    </ol>
 
 ## Background
 
