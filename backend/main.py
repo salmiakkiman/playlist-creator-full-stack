@@ -57,7 +57,7 @@ def callback():
   },
   'medusa'
   )
-  redirect_url = "http://localhost/token/" + str(jwtToken)
+  redirect_url = "http://localhost:3000/token/" + str(jwtToken)
   return redirect(redirect_url)
 
 @app.route('/api/token/refresh', methods=["POST"])

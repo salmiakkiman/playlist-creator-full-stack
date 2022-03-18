@@ -7,8 +7,8 @@
 <li>clone repository `git clone https://github.com/salmiakkiman/playlist-creator-full-stack`
 </li>
 
-<li>run the project `sudo docker-compose up -d`
-</li>
+<li>run the project `sudo docker-compose up -d`</li>
+<li>go to http://localhost:3000</li>
 </ol>
 
 ## Basic functionality
