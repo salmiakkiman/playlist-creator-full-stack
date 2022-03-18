@@ -1,0 +1,13 @@
+/venv
+/__pycache__
+pyvenv.cfg
+
+.DS_Store
+/app/__pycache__
+/app/API/Spotify/__pycache__
+/app/API/Spotify/Object/__pycache__
+/app/API/Genius/__pycache__
+/app/dbFunctions/__pycache__ 
+/app/listHandling/__pycache__
+/app/Model/listHandler/__pycache__
+/app/Model/listHandler/spotifyObjects/__pycache__
