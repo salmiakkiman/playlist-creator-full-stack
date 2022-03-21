@@ -27,5 +27,3 @@ Bacn is build with Python Flask.
 Purpose was to create a retro looking website for bars, so their bartenderds can take song requests from clients.
 
 This project was originally finished in 2020 summer.
-
-The project is far from perfect and retrospectively I should have used unit tests to keep the code clean.
