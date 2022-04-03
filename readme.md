@@ -19,10 +19,9 @@
     <li>Request songs for playlist</li>
 </ol>
 
-## Background
 
 Front is build with Meteor & React.
-Bacn is build with Python Flask.
+Back is build with Python Flask.
 
 Purpose was to create a retro looking website for bars, so their bartenderds can take song requests from clients.
 
