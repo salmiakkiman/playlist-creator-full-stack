@@ -3,11 +3,15 @@
 ![Screenshot](screenhosts/user-front-page.png "User front page")
 
 
-<ol>
-    <li>clone repository `git clone https://github.com/salmiakkiman/playlist-creator-full-stack`</li>
-    <li>run the project `sudo docker-compose up -d` or `sudo docker-compose up --build`</li>
-    <li>go to http://localhost:3000</li>
-</ol>
+Clone repository 
+```bash
+git clone https://github.com/salmiakkiman/playlist-creator-full-stack
+```
+Run the project 
+```bash
+sudo docker-compose up -d` or `sudo docker-compose up --build
+```
+Navigate to http://localhost:3000
 
 ## Basic functionality
 
