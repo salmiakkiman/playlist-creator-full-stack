@@ -17,8 +17,8 @@ app.config.update(
     # CELERY_BROKER_URL='redis://localhost:6379/',
     # CELERY_RESULT_BACKEND='redis://localhost:6379/',
   # for spotify api
-    CLIENT_ID='6eddf98560a84bbdaa97810e047f139b',
-    CLIENT_SECRET='9b1bbe1933f344de9aa7246b175f2478',
+    CLIENT_ID='6eddf98560a84bbdaa97810e047f139b', # add here your own client id (spotify dev)
+    CLIENT_SECRET='', # add here your own client secret (spotify dev)
     REDIRECT_URI='http://localhost:5000/callback',
     SCOPE=(
       'playlist-modify-public%20'
